@@ -1,0 +1,15 @@
+[package]
+name = "solver"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[dependencies]
+graph.workspace = true
+model.workspace = true
+expr.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true

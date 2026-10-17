@@ -1,0 +1,13 @@
+[package]
+name = "plugin"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[dependencies]
+model.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true
