@@ -1,0 +1,16 @@
+[
+  { "id": "minecraft:iron_ore",          "kind": "item", "name_key": "block.minecraft.iron_ore",          "icon": "minecraft:block/iron_ore" },
+  { "id": "minecraft:deepslate_iron_ore","kind": "item", "name_key": "block.minecraft.deepslate_iron_ore","icon": "minecraft:block/deepslate_iron_ore" },
+  { "id": "minecraft:raw_iron",          "kind": "item", "name_key": "item.minecraft.raw_iron",           "icon": "minecraft:item/raw_iron" },
+  { "id": "minecraft:iron_ingot",        "kind": "item", "name_key": "item.minecraft.iron_ingot",         "icon": "minecraft:item/iron_ingot" },
+  { "id": "minecraft:iron_nugget",       "kind": "item", "name_key": "item.minecraft.iron_nugget",        "icon": "minecraft:item/iron_nugget" },
+  { "id": "minecraft:sand",              "kind": "item", "name_key": "block.minecraft.sand",              "icon": "minecraft:block/sand" },
+  { "id": "minecraft:glass",             "kind": "item", "name_key": "block.minecraft.glass",             "icon": "minecraft:block/glass" },
+  { "id": "minecraft:cobblestone",       "kind": "item", "name_key": "block.minecraft.cobblestone",       "icon": "minecraft:block/cobblestone" },
+  { "id": "minecraft:stone",             "kind": "item", "name_key": "block.minecraft.stone",             "icon": "minecraft:block/stone" },
+  { "id": "minecraft:oak_log",           "kind": "item", "name_key": "block.minecraft.oak_log",           "icon": "minecraft:block/oak_log" },
+  { "id": "minecraft:charcoal",          "kind": "item", "name_key": "item.minecraft.charcoal",           "icon": "minecraft:item/charcoal" },
+  { "id": "minecraft:coal",              "kind": "item", "name_key": "item.minecraft.coal",               "icon": "minecraft:item/coal" },
+  { "id": "minecraft:water",             "kind": "fluid","name_key": "block.minecraft.water",             "icon": "minecraft:block/water_still" },
+  { "id": "vanilla:burn_time",           "kind": "energy","name_key": "craftflow.vanilla.burn_time",      "unit": "ticks" }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "vanilla:source/cobblestone_generator",
+    "category": "vanilla:generating",
+    "duration": 20,
+    "inputs": [],
+    "outputs": [ { "resource": "minecraft:cobblestone", "amount": 1 } ],
+    "accuracy": "estimated"
+  }
+]

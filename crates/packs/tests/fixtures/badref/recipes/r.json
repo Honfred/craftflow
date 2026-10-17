@@ -1,0 +1,19 @@
+[
+  {
+    "id": "bad:recipe",
+    "category": "bad:cat",
+    "duration": 100,
+    "inputs": [
+      {
+        "resource": "bad:missing",
+        "amount": 1
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "#bad:tagout",
+        "amount": 1
+      }
+    ]
+  }
+]

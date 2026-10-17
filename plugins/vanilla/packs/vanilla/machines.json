@@ -1,0 +1,62 @@
+[
+  {
+    "id": "minecraft:furnace",
+    "categories": [
+      "minecraft:smelting"
+    ],
+    "params": {},
+    "formulas": {
+      "duration": "recipe.duration",
+      "fuel_per_tick": "fuel_per_tick(coal_burn_time)"
+    },
+    "constants": {
+      "coal_burn_time": 1600
+    },
+    "networks": {
+      "fuel": "vanilla:burn_time"
+    },
+    "accuracy": "exact"
+  },
+  {
+    "id": "minecraft:blast_furnace",
+    "categories": [
+      "minecraft:blasting"
+    ],
+    "params": {},
+    "formulas": {
+      "duration": "blasting_speed(recipe.duration)",
+      "fuel_per_tick": "fuel_per_tick(coal_burn_time)"
+    },
+    "constants": {
+      "coal_burn_time": 1600
+    },
+    "networks": {
+      "fuel": "vanilla:burn_time"
+    },
+    "accuracy": "exact"
+  },
+  {
+    "id": "minecraft:crafting_table",
+    "categories": [
+      "minecraft:crafting"
+    ],
+    "params": {},
+    "formulas": {
+      "duration": "recipe.duration"
+    },
+    "constants": {},
+    "accuracy": "exact"
+  },
+  {
+    "id": "vanilla:cobblestone_generator",
+    "categories": [
+      "vanilla:generating"
+    ],
+    "params": {},
+    "formulas": {
+      "duration": "recipe.duration"
+    },
+    "constants": {},
+    "accuracy": "estimated"
+  }
+]

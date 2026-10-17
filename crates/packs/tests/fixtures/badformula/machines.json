@@ -1,0 +1,13 @@
+[
+  {
+    "id": "bad:machine",
+    "categories": [],
+    "constants": {
+      "a": 1
+    },
+    "formulas": {
+      "duration": "a * mystery",
+      "broken": "2 +"
+    }
+  }
+]

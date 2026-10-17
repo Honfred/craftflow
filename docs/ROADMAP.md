@@ -9,10 +9,10 @@
 - [x] Базовый `tracing`-логгинг
 
 ## Этап 1 — Модель и формулы
-- [ ] `model`: Resource, Tag, Machine (params, formulas, constants), Recipe (chance, catalysts), Pattern, accuracy, единицы
-- [ ] `expr`: парсинг и компиляция выражений, переменные, именованные функции, понятные ошибки
-- [ ] `packs`: загрузка пака из каталога, `pack.toml`, зависимости, слои/оверлеи, валидация ссылок
-- [ ] Ручной мини-пак ванилы (печь, несколько рецептов) для тестов
+- [x] `model`: Resource, Tag, Machine (params, formulas, constants), Recipe (chance, catalysts), Pattern, accuracy, единицы
+- [x] `expr`: парсинг и компиляция выражений, переменные, именованные функции, понятные ошибки
+- [x] `packs`: загрузка пака из каталога, `pack.toml`, зависимости, слои/оверлеи, валидация ссылок
+- [x] Ручной мини-пак ванилы (печь, несколько рецептов) для тестов
 
 ## Этап 2 — Солвер и CLI
 - [ ] `graph`: ноды Machine/Source/Output/Hub/Note, порты, связи, сети; JSON-формат с `format_version`

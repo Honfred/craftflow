@@ -1,0 +1,5 @@
+[
+  { "id": "c:ores/iron",   "values": ["minecraft:iron_ore", "minecraft:deepslate_iron_ore"] },
+  { "id": "c:raw_materials/iron", "values": ["minecraft:raw_iron"] },
+  { "id": "minecraft:coals", "values": ["minecraft:coal", "minecraft:charcoal"] }
+]

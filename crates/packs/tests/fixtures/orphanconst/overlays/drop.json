@@ -1,0 +1,9 @@
+{
+  "operations": [
+    {
+      "op": "remove",
+      "target": "machine:test:furnace",
+      "path": "constants.base_energy"
+    }
+  ]
+}

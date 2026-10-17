@@ -1,0 +1,13 @@
+{
+  "operations": [
+    {
+      "op": "remove",
+      "target": "recipe:test:smelt/ingot"
+    },
+    {
+      "op": "remove",
+      "target": "machine:test:furnace",
+      "path": "formulas.energy"
+    }
+  ]
+}

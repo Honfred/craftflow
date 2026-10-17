@@ -1,0 +1,10 @@
+[
+  {
+    "id": "test:ore",
+    "kind": "item"
+  },
+  {
+    "id": "test:ingot",
+    "kind": "item"
+  }
+]

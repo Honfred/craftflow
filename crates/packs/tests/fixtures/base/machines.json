@@ -1,0 +1,15 @@
+[
+  {
+    "id": "test:furnace",
+    "categories": [
+      "test:smelting"
+    ],
+    "constants": {
+      "base_energy": 50
+    },
+    "formulas": {
+      "duration": "recipe.duration",
+      "energy": "base_energy"
+    }
+  }
+]

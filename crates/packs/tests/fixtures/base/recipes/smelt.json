@@ -1,0 +1,19 @@
+[
+  {
+    "id": "test:smelt/ingot",
+    "category": "test:smelting",
+    "duration": 200,
+    "inputs": [
+      {
+        "resource": "test:ore",
+        "amount": 1
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "test:ingot",
+        "amount": 1
+      }
+    ]
+  }
+]

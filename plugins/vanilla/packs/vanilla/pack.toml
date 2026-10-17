@@ -1,0 +1,6 @@
+[pack]
+id = "vanilla"
+version = "0.1.0"
+format_version = 1
+minecraft = "1.21.1"
+loader = "neoforge"

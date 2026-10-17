@@ -1,0 +1,10 @@
+{
+  "blasting_speed": {
+    "params": ["base"],
+    "body": "base / 2"
+  },
+  "fuel_per_tick": {
+    "params": ["burn_time"],
+    "body": "1 / burn_time"
+  }
+}

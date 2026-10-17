@@ -1,0 +1,42 @@
+[
+  {
+    "id": "minecraft:smelting/iron_ingot_from_ore",
+    "category": "minecraft:smelting",
+    "duration": 200,
+    "inputs":  [ { "resource": "#c:ores/iron", "amount": 1 } ],
+    "outputs": [ { "resource": "minecraft:iron_ingot", "amount": 1 } ],
+    "accuracy": "exact"
+  },
+  {
+    "id": "minecraft:smelting/iron_ingot_from_raw",
+    "category": "minecraft:smelting",
+    "duration": 200,
+    "inputs":  [ { "resource": "#c:raw_materials/iron", "amount": 1 } ],
+    "outputs": [ { "resource": "minecraft:iron_ingot", "amount": 1 } ],
+    "accuracy": "exact"
+  },
+  {
+    "id": "minecraft:smelting/glass",
+    "category": "minecraft:smelting",
+    "duration": 200,
+    "inputs":  [ { "resource": "minecraft:sand", "amount": 1 } ],
+    "outputs": [ { "resource": "minecraft:glass", "amount": 1 } ],
+    "accuracy": "exact"
+  },
+  {
+    "id": "minecraft:smelting/stone",
+    "category": "minecraft:smelting",
+    "duration": 200,
+    "inputs":  [ { "resource": "minecraft:cobblestone", "amount": 1 } ],
+    "outputs": [ { "resource": "minecraft:stone", "amount": 1 } ],
+    "accuracy": "exact"
+  },
+  {
+    "id": "minecraft:smelting/charcoal",
+    "category": "minecraft:smelting",
+    "duration": 200,
+    "inputs":  [ { "resource": "minecraft:oak_log", "amount": 1 } ],
+    "outputs": [ { "resource": "minecraft:charcoal", "amount": 1 } ],
+    "accuracy": "exact"
+  }
+]

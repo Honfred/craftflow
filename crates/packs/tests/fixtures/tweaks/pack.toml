@@ -1,0 +1,5 @@
+[pack]
+id = "tweaks"
+version = "0.1.0"
+format_version = 1
+depends = ["base"]

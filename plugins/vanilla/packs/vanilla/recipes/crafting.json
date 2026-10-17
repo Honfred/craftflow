@@ -1,0 +1,18 @@
+[
+  {
+    "id": "minecraft:crafting/iron_nugget",
+    "category": "minecraft:crafting",
+    "duration": 1,
+    "inputs":  [ { "resource": "minecraft:iron_ingot", "amount": 1 } ],
+    "outputs": [ { "resource": "minecraft:iron_nugget", "amount": 9 } ],
+    "accuracy": "exact"
+  },
+  {
+    "id": "minecraft:crafting/iron_ingot_from_nuggets",
+    "category": "minecraft:crafting",
+    "duration": 1,
+    "inputs":  [ { "resource": "minecraft:iron_nugget", "amount": 9 } ],
+    "outputs": [ { "resource": "minecraft:iron_ingot", "amount": 1 } ],
+    "accuracy": "exact"
+  }
+]

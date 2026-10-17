@@ -1,0 +1,10 @@
+{
+  "operations": [
+    {
+      "op": "set",
+      "target": "recipe:test:nope",
+      "path": "duration",
+      "value": 5
+    }
+  ]
+}
