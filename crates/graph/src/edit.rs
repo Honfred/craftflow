@@ -49,6 +49,8 @@ pub struct Editor {
     /// The key of the last edit, for merging the next one into it.
     coalesce_with: Option<EditKey>,
     saved: bool,
+    revision: u64,
+    content_revision: u64,
 }
 
 impl Default for Editor {
@@ -66,7 +68,25 @@ impl Editor {
             redo: Vec::new(),
             coalesce_with: None,
             saved: true,
+            revision: 0,
+            content_revision: 0,
         }
+    }
+
+    /// Bumped by every change, including moving a node around the canvas.
+    #[must_use]
+    pub const fn revision(&self) -> u64 {
+        self.revision
+    }
+
+    /// Bumped by every change *except* moving a node.
+    ///
+    /// Where a node sits changes neither the answer nor the shape of the
+    /// drawing, so a drag must not trigger a re-solve or a canvas rebuild —
+    /// which would fight the drag itself.
+    #[must_use]
+    pub const fn content_revision(&self) -> u64 {
+        self.content_revision
     }
 
     #[must_use]
@@ -82,6 +102,8 @@ impl Editor {
         self.redo.clear();
         self.coalesce_with = None;
         self.saved = true;
+        self.revision += 1;
+        self.content_revision += 1;
     }
 
     #[must_use]
@@ -126,6 +148,8 @@ impl Editor {
         // uncovered.
         self.coalesce_with = None;
         self.saved = false;
+        self.revision += 1;
+        self.content_revision += 1;
         Some(label)
     }
 
@@ -139,6 +163,8 @@ impl Editor {
         });
         self.coalesce_with = None;
         self.saved = false;
+        self.revision += 1;
+        self.content_revision += 1;
         Some(label)
     }
 
@@ -162,8 +188,13 @@ impl Editor {
             self.redo.clear();
         }
 
+        let moves_only = matches!(key, Some(EditKey::MoveNode(_)));
         self.coalesce_with = key;
         self.saved = false;
+        self.revision += 1;
+        if !moves_only {
+            self.content_revision += 1;
+        }
         change(&mut self.schema)
     }
 

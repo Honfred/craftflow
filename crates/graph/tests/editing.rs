@@ -310,3 +310,30 @@ fn source_rates_and_output_targets_round_trip() {
     let back = Schema::from_json(&text).expect("parses");
     assert_eq!(&back, editor.schema());
 }
+
+#[test]
+fn moving_a_node_does_not_count_as_a_content_change() {
+    let mut editor = editor();
+    let before = editor.content_revision();
+
+    editor.move_node(&NodeId::new("furnaces"), [10.0, 10.0]);
+
+    // The drawing moved, so something changed...
+    assert!(editor.revision() > 0);
+    // ...but nothing that changes the answer or the node's pins, so a drag
+    // triggers neither a re-solve nor a canvas rebuild.
+    assert_eq!(editor.content_revision(), before);
+
+    editor.set_count(&NodeId::new("furnaces"), Some(8.0));
+    assert!(editor.content_revision() > before);
+}
+
+#[test]
+fn undo_is_a_content_change_even_when_it_undoes_a_move() {
+    let mut editor = editor();
+    editor.move_node(&NodeId::new("furnaces"), [10.0, 10.0]);
+    let before = editor.content_revision();
+
+    editor.undo();
+    assert!(editor.content_revision() > before);
+}

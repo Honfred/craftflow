@@ -7,6 +7,7 @@ repository.workspace = true
 
 [dependencies]
 solver.workspace = true
+model.workspace = true
 graph.workspace = true
 packs.workspace = true
 plugin.workspace = true
@@ -16,6 +17,8 @@ import.workspace = true
 anyhow.workspace = true
 eframe.workspace = true
 egui.workspace = true
+egui-snarl.workspace = true
+rfd.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
 
