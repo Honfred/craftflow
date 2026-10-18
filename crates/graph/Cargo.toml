@@ -7,7 +7,13 @@ repository.workspace = true
 
 [dependencies]
 model.workspace = true
+
+serde.workspace = true
+serde_json.workspace = true
 thiserror.workspace = true
 
 [lints]
 workspace = true
+
+[dev-dependencies]
+packs.workspace = true

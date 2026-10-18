@@ -14,7 +14,9 @@ use crate::error::PackError;
 use crate::manifest::PackManifest;
 use crate::overlay::{EntityKind, EntityRef, Operation, remove_path, set_path};
 use crate::raw::{Entry, RawPack};
-use crate::validate::{Issue, validate};
+use model::Issue;
+
+use crate::validate::validate;
 
 /// Everything the rest of the application reads pack data through.
 #[derive(Debug, Default)]
@@ -446,4 +448,72 @@ pub(crate) fn compile_formulas(
     }
 
     compiled
+}
+
+/// Lets `graph` and `solver` read pack data without depending on this crate
+/// (DESIGN.md §3): the trait lives in `model`, which all three share.
+impl model::Catalog for Registry {
+    fn resource(&self, id: &Id) -> Option<&model::Resource> {
+        self.resources.get(id)
+    }
+
+    fn tag(&self, id: &Id) -> Option<&model::Tag> {
+        self.tags.get(id)
+    }
+
+    fn machine(&self, id: &Id) -> Option<&Machine> {
+        self.machines.get(id)
+    }
+
+    fn recipe(&self, id: &Id) -> Option<&Recipe> {
+        self.recipes.get(id)
+    }
+
+    fn evaluate(
+        &self,
+        machine: &Id,
+        formula: &str,
+        recipe: &Recipe,
+        params: &BTreeMap<String, model::ParamValue>,
+    ) -> Result<Option<f64>, model::CatalogError> {
+        let Some(machine_def) = self.machines.get(machine) else {
+            return Err(model::CatalogError::NoMachine {
+                machine: machine.clone(),
+            });
+        };
+        let Some(compiled) = self.formulas.get(machine).and_then(|f| f.get(formula)) else {
+            return Ok(None);
+        };
+
+        // Three sources, consulted in order: what the user set, the machine's
+        // constants, and the recipe's own fields.
+        let values: BTreeMap<String, f64> = params
+            .iter()
+            .map(|(name, value)| (name.clone(), value.as_f64()))
+            .collect();
+        let defaults: BTreeMap<String, f64> = machine_def
+            .default_params()
+            .iter()
+            .map(|(name, value)| (name.clone(), value.as_f64()))
+            .collect();
+        let recipe_fields: BTreeMap<String, f64> =
+            [("recipe.duration".to_owned(), recipe.duration.0)]
+                .into_iter()
+                .collect();
+
+        let scope = expr::Scope::new()
+            .with(&values)
+            .with(&defaults)
+            .with(&machine_def.constants)
+            .with(&recipe_fields);
+
+        compiled
+            .eval(&self.env, &scope)
+            .map(Some)
+            .map_err(|error| model::CatalogError::Eval {
+                machine: machine.clone(),
+                formula: formula.to_owned(),
+                message: error.to_string(),
+            })
+    }
 }

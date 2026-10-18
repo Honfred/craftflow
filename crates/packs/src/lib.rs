@@ -33,10 +33,10 @@ pub mod validate;
 
 pub use error::PackError;
 pub use manifest::{Dependency, PackManifest, SUPPORTED_FORMAT_VERSION};
+pub use model::{Issue, Severity};
 pub use overlay::{EntityKind, EntityRef, Operation, Overlay};
 pub use raw::RawPack;
 pub use registry::{Loaded, RECIPE_FIELDS, Registry, build};
-pub use validate::{Issue, Severity};
 
 use std::path::Path;
 

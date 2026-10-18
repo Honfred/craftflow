@@ -11,8 +11,10 @@
 #![cfg_attr(test, allow(clippy::unwrap_used, clippy::expect_used))]
 
 pub mod accuracy;
+pub mod catalog;
 pub mod error;
 pub mod id;
+pub mod issue;
 pub mod machine;
 pub mod pattern;
 pub mod recipe;
@@ -20,8 +22,10 @@ pub mod resource;
 pub mod units;
 
 pub use accuracy::Accuracy;
+pub use catalog::{Catalog, CatalogError};
 pub use error::{IdError, IdPart, ParamError};
 pub use id::Id;
+pub use issue::{Issue, Severity};
 pub use machine::{Machine, ParamSpec, ParamValue};
 pub use pattern::{Pattern, PatternKind, PatternTarget, Stack};
 pub use recipe::{Ingredient, Output, Recipe};

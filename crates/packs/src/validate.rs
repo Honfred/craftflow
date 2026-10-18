@@ -2,59 +2,9 @@
 
 use std::collections::BTreeSet;
 
-use model::ResourceRef;
+use model::{Issue, ResourceRef};
 
 use crate::registry::{Registry, compile_formulas};
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Severity {
-    /// The data is wrong and whatever depends on it will not work.
-    Error,
-    /// Suspicious, but usable — a partial pack looks like this.
-    Warning,
-}
-
-/// Something worth telling the user about one entity.
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Issue {
-    pub severity: Severity,
-    /// What the issue is about, e.g. `recipe:minecraft:smelting/iron`.
-    pub where_: String,
-    pub message: String,
-}
-
-impl Issue {
-    pub fn error(where_: impl Into<String>, message: impl Into<String>) -> Self {
-        Self {
-            severity: Severity::Error,
-            where_: where_.into(),
-            message: message.into(),
-        }
-    }
-
-    pub fn warning(where_: impl Into<String>, message: impl Into<String>) -> Self {
-        Self {
-            severity: Severity::Warning,
-            where_: where_.into(),
-            message: message.into(),
-        }
-    }
-
-    #[must_use]
-    pub const fn is_error(&self) -> bool {
-        matches!(self.severity, Severity::Error)
-    }
-}
-
-impl std::fmt::Display for Issue {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let label = match self.severity {
-            Severity::Error => "error",
-            Severity::Warning => "warning",
-        };
-        write!(f, "{label}: {}: {}", self.where_, self.message)
-    }
-}
 
 /// Checks references, numbers and formulas, filling in the registry's
 /// compiled formulas as it goes.
