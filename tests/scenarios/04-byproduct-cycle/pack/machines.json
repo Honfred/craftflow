@@ -1,0 +1,8 @@
+[
+  {
+    "id": "cycle:crusher",
+    "categories": ["cycle:crushing", "cycle:recovery"],
+    "formulas": { "duration": "recipe.duration" },
+    "accuracy": "exact"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "description": "DESIGN.md §11 scenario 4. Crushing ore yields dust plus slag, and four slag recover one ore, so the byproduct genuinely feeds back into the input. With 60 fresh ore a minute the loop settles at 80 ore crushed (60 fresh + 20 recovered), giving 160 dust instead of the 120 the same ore would make without the loop. Nothing may pile up.",
+  "unit": "minute",
+  "outputs": { "dust_out": 160.0 },
+  "sources": { "fresh_ore": 60.0 },
+  "links": {
+    "fresh_ore->ore_buffer/cycle:ore": 60.0,
+    "ore_buffer->crusher/cycle:ore": 80.0,
+    "crusher->dust_out/cycle:dust": 160.0,
+    "crusher->recovery/cycle:slag": 80.0,
+    "recovery->ore_buffer/cycle:ore": 20.0
+  },
+  "surplus": {},
+  "accuracy": "estimated"
+}

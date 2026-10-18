@@ -1,0 +1,5 @@
+[
+  { "id": "cycle:ore",  "kind": "item", "name_key": "craftflow.cycle.ore" },
+  { "id": "cycle:dust", "kind": "item", "name_key": "craftflow.cycle.dust" },
+  { "id": "cycle:slag", "kind": "item", "name_key": "craftflow.cycle.slag" }
+]

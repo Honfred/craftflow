@@ -1,0 +1,43 @@
+{
+  "format_version": 1,
+  "packs": [
+    { "id": "cycle", "version": "0.1.0" }
+  ],
+  "nodes": [
+    {
+      "id": "fresh_ore",
+      "label": "Fresh ore",
+      "type": "source",
+      "resource": "cycle:ore",
+      "rate": { "amount": 60, "unit": "minute" }
+    },
+    { "id": "ore_buffer", "label": "Ore buffer", "type": "hub" },
+    {
+      "id": "crusher",
+      "label": "Crusher",
+      "type": "machine",
+      "machine": "cycle:crusher",
+      "recipe": "cycle:crushing/ore"
+    },
+    {
+      "id": "recovery",
+      "label": "Slag recovery",
+      "type": "machine",
+      "machine": "cycle:crusher",
+      "recipe": "cycle:recovery/slag"
+    },
+    {
+      "id": "dust_out",
+      "label": "Dust",
+      "type": "output",
+      "resource": "cycle:dust"
+    }
+  ],
+  "links": [
+    { "from": "fresh_ore", "to": "ore_buffer", "resource": "cycle:ore" },
+    { "from": "ore_buffer", "to": "crusher", "resource": "cycle:ore" },
+    { "from": "crusher", "to": "dust_out", "resource": "cycle:dust" },
+    { "from": "crusher", "to": "recovery", "resource": "cycle:slag" },
+    { "from": "recovery", "to": "ore_buffer", "resource": "cycle:ore" }
+  ]
+}

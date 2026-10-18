@@ -1,0 +1,37 @@
+{
+  "format_version": 1,
+  "packs": [
+    { "id": "vanilla", "version": "0.1.0" }
+  ],
+  "nodes": [
+    {
+      "id": "ore",
+      "label": "Iron ore supply",
+      "type": "source",
+      "resource": "minecraft:iron_ore",
+      "rate": { "amount": 600, "unit": "minute" }
+    },
+    {
+      "id": "furnaces",
+      "label": "Furnace bank",
+      "type": "machine",
+      "machine": "minecraft:furnace",
+      "recipe": "minecraft:smelting/iron_ingot_from_ore",
+      "count": 8,
+      "networks": { "fuel": "fuel" }
+    },
+    {
+      "id": "ingots",
+      "label": "Iron ingots",
+      "type": "output",
+      "resource": "minecraft:iron_ingot"
+    }
+  ],
+  "links": [
+    { "from": "ore", "to": "furnaces", "resource": "minecraft:iron_ore" },
+    { "from": "furnaces", "to": "ingots", "resource": "minecraft:iron_ingot" }
+  ],
+  "networks": {
+    "fuel": { "kind": "vanilla:burn_time", "label": "Coal" }
+  }
+}

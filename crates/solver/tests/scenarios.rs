@@ -260,7 +260,8 @@ fn an_estimated_input_marks_the_whole_result() {
 }
 
 // ---------------------------------------------------------------------------
-// Scenario 4: a byproduct fed back into the input.
+// Cycles. The load-bearing byproduct loop of §11 scenario 4 lives in
+// tests/scenarios/04-byproduct-cycle; these cover the degenerate cases.
 // ---------------------------------------------------------------------------
 
 /// Nuggets are the loop: ingots craft into nine nuggets, nine nuggets craft
@@ -298,7 +299,7 @@ fn nugget_loop(ingots_per_minute: f64) -> Schema {
 }
 
 #[test]
-fn scenario_4_a_cycle_converges() {
+fn a_cycle_that_gains_nothing_is_left_unused() {
     let registry = vanilla();
     let report = solve(&nugget_loop(60.0), &registry as &dyn Catalog).expect("solves");
 
@@ -309,10 +310,19 @@ fn scenario_4_a_cycle_converges() {
         "got {}",
         per_minute(&report, "nuggets_out")
     );
+
+    // And since going round gains nothing, the solver sends nothing round.
+    let loop_flow = report
+        .links
+        .iter()
+        .find(|link| link.to.as_str() == "to_ingots")
+        .expect("the loop link")
+        .rate;
+    assert!(approx_eq(loop_flow.as_per_tick(), 0.0));
 }
 
 #[test]
-fn scenario_4_the_loop_does_not_invent_material() {
+fn a_cycle_does_not_invent_material() {
     let registry = vanilla();
     let report = solve(&nugget_loop(60.0), &registry as &dyn Catalog).expect("solves");
 
@@ -331,7 +341,7 @@ fn scenario_4_the_loop_does_not_invent_material() {
 }
 
 #[test]
-fn scenario_4_surplus_shows_up_when_the_loop_is_cut() {
+fn a_schema_with_nothing_to_maximise_says_so() {
     let registry = vanilla();
     let mut schema = nugget_loop(60.0);
     // Remove the output, so the nuggets have nowhere to go.

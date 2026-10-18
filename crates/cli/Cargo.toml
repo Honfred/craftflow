@@ -13,6 +13,7 @@ path = "src/main.rs"
 
 [dependencies]
 solver.workspace = true
+model.workspace = true
 graph.workspace = true
 packs.workspace = true
 plugin.workspace = true
@@ -25,3 +26,7 @@ tracing-subscriber.workspace = true
 
 [lints]
 workspace = true
+
+[dev-dependencies]
+serde.workspace = true
+serde_json.workspace = true

@@ -33,7 +33,8 @@ impl NodeId {
 
 impl fmt::Display for NodeId {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str(&self.0)
+        // `pad`, not `write_str`, so `{:<14}` lines node ids up in a column.
+        f.pad(&self.0)
     }
 }
 

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "cycle:crushing/ore",
+    "category": "cycle:crushing",
+    "duration": 100,
+    "inputs":  [ { "resource": "cycle:ore", "amount": 1 } ],
+    "outputs": [ { "resource": "cycle:dust", "amount": 2 },
+                 { "resource": "cycle:slag", "amount": 1 } ],
+    "accuracy": "exact"
+  },
+  {
+    "id": "cycle:recovery/slag",
+    "category": "cycle:recovery",
+    "duration": 100,
+    "inputs":  [ { "resource": "cycle:slag", "amount": 4 } ],
+    "outputs": [ { "resource": "cycle:ore", "amount": 1 } ],
+    "accuracy": "exact"
+  }
+]

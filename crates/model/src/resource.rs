@@ -148,9 +148,10 @@ impl ResourceRef {
 
 impl fmt::Display for ResourceRef {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        // See `Id`: `pad` keeps width and alignment working.
         match self {
-            Self::Resource(id) => write!(f, "{id}"),
-            Self::Tag(id) => write!(f, "#{id}"),
+            Self::Resource(id) => f.pad(&id.to_string()),
+            Self::Tag(id) => f.pad(&format!("#{id}")),
         }
     }
 }

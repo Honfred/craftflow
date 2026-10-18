@@ -1,0 +1,10 @@
+{
+  "description": "DESIGN.md §11 scenario 1. Eight furnaces at 200 ticks a smelt make 48 ingots a minute and are the bottleneck; the ore supply is barely touched. Checks units and load.",
+  "unit": "minute",
+  "outputs": { "ingots": 48.0 },
+  "loads": { "furnaces": 1.0 },
+  "sources": { "ore": 48.0 },
+  "networks": { "fuel": { "produced": 0.0, "consumed": 6.0 } },
+  "surplus": {},
+  "accuracy": "estimated"
+}

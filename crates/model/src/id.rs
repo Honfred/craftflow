@@ -65,7 +65,9 @@ fn check_part(input: &str, part: IdPart, value: &str) -> Result<(), IdError> {
 
 impl fmt::Display for Id {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}:{}", self.namespace, self.path)
+        // `pad` rather than `write!`, so that `{:<32}` lines ids up in a
+        // column; a plain `write!` silently ignores width and alignment.
+        f.pad(&format!("{}:{}", self.namespace, self.path))
     }
 }
 
