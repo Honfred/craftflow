@@ -14,12 +14,14 @@
 #![warn(clippy::unwrap_used, clippy::expect_used)]
 #![cfg_attr(test, allow(clippy::unwrap_used, clippy::expect_used))]
 
+pub mod edit;
 pub mod error;
 pub mod migrate;
 pub mod node;
 pub mod schema;
 pub mod validate;
 
+pub use edit::{EditKey, Editor, HISTORY_LIMIT};
 pub use error::GraphError;
 pub use migrate::{CURRENT_FORMAT_VERSION, format_version, migrate};
 pub use node::{

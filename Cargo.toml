@@ -37,9 +37,11 @@ good_lp = { version = "1.15.3", default-features = false }
 tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 
-# GUI and CLI.
-eframe = "0.37.0"
-egui = "0.37.0"
+# GUI and CLI. Pinned to 0.36 because egui-snarl 0.12 builds against it;
+# a newer egui would put two incompatible copies in the tree.
+eframe = "0.36.0"
+egui = "0.36.0"
+egui-snarl = "0.12.0"
 clap = { version = "4.6.7", features = ["derive"] }
 
 [workspace.lints.rust]
