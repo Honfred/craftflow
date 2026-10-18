@@ -9,7 +9,20 @@ repository.workspace = true
 graph.workspace = true
 model.workspace = true
 expr.workspace = true
+
+good_lp.workspace = true
 thiserror.workspace = true
+
+[features]
+default = ["microlp"]
+# Pure Rust, no system dependencies: the default so CI stays simple.
+microlp = ["good_lp/microlp"]
+# Faster on large problems, but pulls in a C++ build.
+highs = ["good_lp/highs"]
+
+[dev-dependencies]
+packs.workspace = true
+serde_json.workspace = true
 
 [lints]
 workspace = true

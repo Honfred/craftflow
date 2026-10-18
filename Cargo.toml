@@ -29,6 +29,10 @@ serde_json = "1.0.154"
 toml = "1.1.8"
 semver = "1.0.28"
 
+# LP. The default backend (coin_cbc) needs a C toolchain, so it is off:
+# microlp is pure Rust and keeps CI simple on all three platforms.
+good_lp = { version = "1.15.3", default-features = false }
+
 # Logging.
 tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
